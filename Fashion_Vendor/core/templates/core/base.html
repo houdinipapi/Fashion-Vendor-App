@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta charset clarification -->
+    <meta charset="UTF-8">
+
+    <!-- Meta description clarification -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Title -->
+    <title>{% block title %}{% endblock %} | Fashion Vendor</title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="py-6 px-6 flex justify-between items-center border-b border-blue-400">
+        <a href="/" class="text-xl font-bold text-blue-700">Fashion Vendor</a>
+
+        <div class="space-x-6">
+            <!-- New item Link -->
+            <a href="#" class="text-lg font-semibold text-blue-700 hover:text-blue-400">New Item</a>
+
+            <!-- Browse link -->
+            <a href="#" class="text-lg font-semibold text-blue-700 hover:text-blue-400">Browse</a>
+
+            <!-- Sign Up Button -->
+            <a href="#" class="px-6 py-3 text-lg font-semibold bg-blue-500 text-white rounded-xl hover:bg-blue-700">Sign Up</a>
+
+            <!-- Log In Button -->
+            <a href="#" class="px-6 py-3 text-lg font-semibold bg-yellow-500 text-white rounded-xl hover:bg-yellow-700">Log In</a>
+
+        </div>
+
+    </nav>
+
+    
+
+    <div class="px-6 py-6">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer class="py-6 px-6 flex justify-between bg-gray-800">
+        <div class="w-3/5 pr-10">
+            <h3 class="mb-5 font-semibold text-lg text-blue-400">About</h3>
+
+            <p class="text-blue-300">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio labore voluptas nostrum fugit maiores odio veniam eveniet.
+            </p>
+        </div>
+
+        <div class="w-1/5">
+            <h3 class="mb-5 font-semibold text-lg text-blue-400">Menu</h3>
+
+            <ul class="space-y-2">
+                <li><a href="#" class="text-yellow-300 hover:text-yellow-600">About</a></li>
+                <li><a href="{% url 'contact' %}" class="text-yellow-300 hover:text-yellow-600">Contact</a></li>
+                <li><a href="#" class="text-yellow-300 hover:text-yellow-600">Privacy Policy</a></li>
+                <li><a href="#" class="text-yellow-300 hover:text-yellow-600">Terms of Use</a></li>
+                
+            </ul>
+        </div>
+
+    </footer>
+
+</body>
+</html>
