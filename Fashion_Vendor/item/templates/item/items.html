@@ -10,6 +10,16 @@
 
                 <button class="mt-2 py-4 px-8 text-lg bg-yellow-500 font-semibold text-white rounded-xl">Search</button>
             </form>
+            <hr class="my-6 border-blue-400">
+            
+            <p class="font-semibold">Categories</p>
+            <ul>
+                {% for category in categories %}
+                    <li class="py-2 px-2 rounded-xl {% if category.id == category_id %}">
+                        <a href="{% url 'item:items' %}?query={{ query }}&category={{ category.id }}">{{ category.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
 
         <div class="col-span-3">
