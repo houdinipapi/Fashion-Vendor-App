@@ -4,21 +4,26 @@ from django.shortcuts import redirect, render, get_object_or_404
 from .forms import NewItemForm
 from .models import Item
 
+
 # Create your views here.
 def detail(request, pk):
-    item = get_object_or_404(Item, pk=pk)  # Get the object or return a 404 if it doesn't exist
-    related_items = Item.objects.filter(category=item.category, is_sold=False).exclude(pk=pk)[0:3]  # Get the related items
+    item = get_object_or_404(
+        Item, pk=pk
+    )  # Get the object or return a 404 if it doesn't exist
+    related_items = Item.objects.filter(category=item.category, is_sold=False).exclude(
+        pk=pk
+    )[
+        0:3
+    ]  # Get the related items
 
-
-    return render(request, 'item/detail.html', {
-        'item': item,
-        'related_items': related_items
-    })
+    return render(
+        request, "item/detail.html", {"item": item, "related_items": related_items}
+    )
 
 
 @login_required
 def new(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = NewItemForm(request.POST, request.FILES)
 
         if form.is_valid():
@@ -30,7 +35,19 @@ def new(request):
     else:
         form = NewItemForm()
 
-    return render(request, 'item/form.html',{
-        'form': form,
-        'title':'New Item',
-    })
+    return render(
+        request,
+        "item/form.html",
+        {
+            "form": form,
+            "title": "New Item",
+        },
+    )
+
+
+@login_required
+def delete(request, pk):
+    item = get_object_or_404(Item, pk=pk, created_by=request.user)
+    item.delete()
+
+    return redirect("dashboard:index")
