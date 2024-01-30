@@ -3,32 +3,30 @@
 {% block title %}Inbox{% endblock %}
 
 {% block content %}
-    <h1 class="mb-6 text-3xl">Inbox</h1>
+    <h1 class="mb-6 text-2xl text-blue-700 font-semibold">Inbox</h1>
     <div class="spcae-y-6">
         {% for conversation in conversations %}
-            <div class="p-6 bg-gray-200 rounded-xl">
-                <a href="#">
-                    <div class="p-6 flex bg-gray-200 rounded-xl">
-                        <div class="pr-6">
-                            <img src="{{ conversation.item.image.url }}" class="w-20 rounded-xl">
-                        </div>
-
-                        <div>
-                            {% for member in conversation.members.all %}
-                                {% if member != request.user %}
-                                    <p class="mb-4 text-blue-600">
-                                        <strong>{{ member.username }}</strong> | {{ conversation.modified_at|date:"F j, Y, H:i" }} ({{ conversation.modified_at|timesince }} ago)
-                                    </p>
-
-                                    <p>
-                                        {{ conversation.item.name }}
-                                    </p>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
+            <a href="{% url 'conversation:detail' conversation.id %}">
+                <div class="p-6 flex bg-gray-200 rounded-xl">
+                    <div class="pr-6">
+                        <img src="{{ conversation.item.image.url }}" class="w-20 rounded-xl">
                     </div>
-                </a>
-            </div>
+
+                    <div>
+                        {% for member in conversation.members.all %}
+                            {% if member != request.user %}
+                                <p class="mb-4 text-blue-600">
+                                    <strong>{{ member.username }}</strong> | {{ conversation.modified_at|date:"F j, Y, @ H:i" }} ({{ conversation.modified_at|timesince }} ago)
+                                </p>
+
+                                <p>
+                                    {{ conversation.item.name }}
+                                </p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}
