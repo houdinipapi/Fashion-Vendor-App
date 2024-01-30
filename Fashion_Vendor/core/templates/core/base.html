@@ -67,10 +67,10 @@
             <h3 class="mb-5 font-semibold text-lg text-blue-400">Menu</h3>
 
             <ul class="space-y-2">
-                <li><a href="#" class="text-yellow-300 hover:text-yellow-600">About</a></li>
+                <li><a href="{% url 'core:about_us' %}" class="text-yellow-300 hover:text-yellow-600">About</a></li>
                 <li><a href="{% url 'core:contact' %}" class="text-yellow-300 hover:text-yellow-600">Contact</a></li>
-                <li><a href="#" class="text-yellow-300 hover:text-yellow-600">Privacy Policy</a></li>
-                <li><a href="#" class="text-yellow-300 hover:text-yellow-600">Terms of Use</a></li>
+                <li><a href="{% url 'core:privacy' %}" class="text-yellow-300 hover:text-yellow-600">Privacy Policy</a></li>
+                <li><a href="{% url 'core:terms' %}" class="text-yellow-300 hover:text-yellow-600">Terms of Use</a></li>
 
                 {% if request.user.is_authenticated %}
                     <li><a href="{% url 'core:logout' %}" class="text-red-400 hover:text-red-600">Log out</a></li>

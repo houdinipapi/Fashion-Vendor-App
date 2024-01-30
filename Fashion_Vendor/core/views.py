@@ -18,8 +18,17 @@ def index(request):
     )
 
 
+def about_us(request):
+    return render(request, "core/about_us.html")
+
 def contact(request):
     return render(request, "core/contact.html")
+
+def privacy(request):
+    return render(request, "core/privacy.html")
+
+def terms(request):
+    return render(request, "core/terms.html")
 
 
 def signup(request):
