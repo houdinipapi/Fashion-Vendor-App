@@ -12,7 +12,7 @@
             </form>
             <hr class="my-6 border-blue-400">
             
-            <p class="font-semibold">Categories</p>
+            <p class="font-bold">Categories</p>
             <ul>
                 {% for category in categories %}
                     <li class="py-2 px-2 rounded-xl {% if category.id == category_id %} bg-blue-200{% endif %}">
@@ -23,7 +23,7 @@
 
             <hr class="my-6 border-blue-400">
             
-            <p class="font-semibold">Clear filters</p>
+            <p class="font-bold">Clear filters</p>
 
             <ul>
                 <li><a href="{% url 'item:items' %}" class="mt-2 py-4 px-8 inline-block bg-yellow-500 hover:bg-yellow-700 text-lg font-semibold rounded-xl text-white">Reset</a></li>
