@@ -71,6 +71,10 @@
                 <li><a href="{% url 'core:contact' %}" class="text-yellow-300 hover:text-yellow-600">Contact</a></li>
                 <li><a href="#" class="text-yellow-300 hover:text-yellow-600">Privacy Policy</a></li>
                 <li><a href="#" class="text-yellow-300 hover:text-yellow-600">Terms of Use</a></li>
+
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'core:logout' %}" class="text-red-400 hover:text-red-600">Log out</a></li>
+                {% endif %}
                 
             </ul>
         </div>
